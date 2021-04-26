@@ -16,6 +16,9 @@ public class detailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         Libro libro = new Libro(b.getString("titulo"),b.getString("autor"),b.getString("editorial"), b.getInt("imgPortada"));
@@ -29,5 +32,11 @@ public class detailActivity extends AppCompatActivity {
         autor.setText( libro.autor);
         editorial.setText( libro.editorial);
         img.setImageResource(libro.portadaImg);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 }
